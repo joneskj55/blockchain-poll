@@ -30,7 +30,11 @@ export class PollService {
     ]).pipe(delay(2000));
   }
 
-  vote() {}
+  vote(pollId: number , voteNumber: number) {
+    console.log(pollId, voteNumber);
+  }
 
-  createPoll() {}
+  createPoll(question: string, thumbnail: string, options: string[]) {
+    console.log(question, thumbnail, options);
+  }
 }
