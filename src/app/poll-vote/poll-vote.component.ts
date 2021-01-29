@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// @ts-ignore
 import ApexCharts from 'apexcharts';
 
 @Component({
