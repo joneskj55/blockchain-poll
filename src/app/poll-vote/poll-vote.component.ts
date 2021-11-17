@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import ApexCharts from 'apexcharts/dist/apexcharts.common.js';
+import { PollVote } from '../types';
+
 
 @Component({
   selector: 'app-poll-vote',
@@ -14,6 +16,9 @@ export class PollVoteComponent implements AfterViewInit {
   @Input() options: string[];
   @Input() results: number[];
   @Input() question: string;
+  @Input() id: number;
+
+  @Output() pollVoted: EventEmitter<PollVote> = new EventEmitter();
 
   voteForm: FormGroup;
 
@@ -30,7 +35,12 @@ export class PollVoteComponent implements AfterViewInit {
   }
 
   submitForm() {
-    console.log(this.voteForm.value);
+    const pollVoted: PollVote = {
+      id: this.id,
+      vote: this.voteForm.get("selected").value
+    }
+
+    this.pollVoted.emit(pollVoted);
   }
 
   generateChart() {
