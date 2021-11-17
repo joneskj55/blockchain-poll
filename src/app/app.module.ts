@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { PollCreateComponent } from './poll-create/poll-create.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PollComponent } from './poll/poll.component';
 import { PollVoteComponent } from './poll-vote/poll-vote.component';
 
@@ -12,12 +12,10 @@ import { PollVoteComponent } from './poll-vote/poll-vote.component';
     AppComponent,
     PollCreateComponent,
     PollComponent,
-    PollVoteComponent
+    PollVoteComponent,
   ],
-  imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule
-  ],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
