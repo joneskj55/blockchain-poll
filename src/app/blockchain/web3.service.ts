@@ -24,5 +24,19 @@ export class Web3Service {
     } else {
       console.log('MetaMask not found. Install or enable MetaMask.')
     }
-   }
+  }
+
+  getAccount(): Promise<string> {
+    return this.web3.eth.getAccounts().then((accounts) => accounts[0] || '');
+  }
+
+  // executeTransaction("vote", pollId, vote)
+  // executeTransaction("createPoll", question, thumb, options)
+
+  async executeTransaction(fnName: string, ...args: any[]): Promise<void> {
+    const acc = await this.getAccount()
+    this.contract.methods[fnName](...args).send({ from: acc });
+  }
+
+
 }
