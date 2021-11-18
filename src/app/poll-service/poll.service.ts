@@ -6,11 +6,10 @@ import { Poll, PollForm } from '../types';
 import { fromAscii } from 'web3-utils';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PollService {
-
-  constructor(private web3: Web3Service) { }
+  constructor(private web3: Web3Service) {}
 
   getPolls(): Observable<Poll[]> {
     return of([
@@ -34,15 +33,15 @@ export class PollService {
   }
 
   vote(pollId: number, voteNumber: number) {
-    this.web3.executeTransaction("vote", pollId, voteNumber);
+    this.web3.executeTransaction('vote', pollId, voteNumber);
   }
 
   createPoll(poll: PollForm) {
     this.web3.executeTransaction(
-      "createPoll",
+      'createPoll',
       poll.question,
       poll.thumbnail || '',
-      poll.options.map(opt => fromAscii(opt))
+      poll.options.map((opt) => fromAscii(opt))
     );
   }
 }
