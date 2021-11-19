@@ -59,4 +59,8 @@ export class PollService {
         voter.votedIds.find((votedId) => votedId === parseInt(pollRaw[0])),
     };
   }
+
+  onEvent(name: string) {
+    return this.web3.onEvents(name);
+  }
 }
